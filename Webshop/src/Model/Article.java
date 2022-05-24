@@ -8,7 +8,6 @@ public class Article {
      private String artName = "";
 
 
-
     public Article(int artID,int stock, String artName){
         this.artID = artID;
         this.stock = stock;

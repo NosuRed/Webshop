@@ -21,8 +21,11 @@ public class ArticleController {
     }
 
 
-
-
+    /**
+     * returns an article from the article list by name
+     * @param artName the wanted article to return
+     * @return return an article
+     */
     public Article getArticleByName(String artName){
         for (int i = 0; i < allArticles.size(); i++) {
             if(allArticles.get(i).getArtName().equals(artName)){
@@ -39,7 +42,13 @@ public class ArticleController {
     }
 
     //TODO Error handling
-    public void increaseStock(int id, int changeAmount){
+
+    /**
+     * Allowes stock amount to be changed
+     * @param id the id of the Article
+     * @param changeAmount the wanted change amoiunt
+     */
+    public void adjustStock(int id, int changeAmount){
             int currentStock = -1;
             for (int i = 0; i < this.allArticles.size(); i++) {
                 if(this.allArticles.get(i).getArtID() == id){
