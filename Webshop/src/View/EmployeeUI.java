@@ -1,8 +1,6 @@
 package View;
 
-import java.sql.SQLOutput;
-
-public class EmployeeUI{
+public class EmployeeUI {
 
     public void standartUI() {
         System.out.println("Create new Employee account: [N]");

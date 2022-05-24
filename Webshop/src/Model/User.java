@@ -8,7 +8,7 @@ public abstract class User {
     private String password = "";
     private boolean isEmployee = false;
 
-    public User(String name, String lastName, int id, String userName, String password, boolean isEmployee ) {
+    public User(String name, String lastName, int id, String userName, String password, boolean isEmployee) {
         this.name = name;
         this.lastName = lastName;
         this.idNum = id;

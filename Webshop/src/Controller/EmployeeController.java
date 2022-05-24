@@ -4,7 +4,6 @@ import Model.Article;
 import Model.User;
 
 
-
 public class EmployeeController extends UserController {
     Article acModel = null;
     ArticleController ac = null;
@@ -12,10 +11,11 @@ public class EmployeeController extends UserController {
 
     /**
      * add a new article
+     *
      * @param model of the article
-     * @param ac the article controller
+     * @param ac    the article controller
      */
-    public void addArticle(Article model, ArticleController ac){
+    public void addArticle(Article model, ArticleController ac) {
         this.acModel = model;
         this.ac = ac;
         this.ac.addArticle(this.acModel);
@@ -26,7 +26,6 @@ public class EmployeeController extends UserController {
         super.addUser(user);
 
     }
-
 
 
 }

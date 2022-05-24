@@ -2,42 +2,45 @@ package Controller;
 
 import Model.Article;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 public class ArticleController {
-    private List<Article> allArticles = new Vector<>();
+    private final List<Article> allArticles = new Vector<>();
 
 
     //private ArrayList<String> allArticlesAlphabeticOrder = new ArrayList<>();
-    private ArrayList<Integer> sortByNum = new ArrayList<>();
+    private final ArrayList<Integer> sortByNum = new ArrayList<>();
 
 
     public List<Article> getAllArticles() {
         return allArticles;
     }
 
-    public void addArticle(Article article){
+    public void addArticle(Article article) {
         allArticles.add(article);
     }
 
 
     /**
      * returns an article from the article list by name
+     *
      * @param artName the wanted article to return
      * @return return an article
      */
-    public Article getArticleByName(String artName){
+    public Article getArticleByName(String artName) {
         for (int i = 0; i < allArticles.size(); i++) {
-            if(allArticles.get(i).getArtName().equals(artName)){
+            if (allArticles.get(i).getArtName().equals(artName)) {
                 System.out.println(allArticles.get(i).getArtName());
-            return allArticles.get(i);
+                return allArticles.get(i);
             }
         }
         return null;
     }
 
 
-    public int generateArticleID(){
+    public int generateArticleID() {
         return allArticles.size();
     }
 
@@ -45,21 +48,21 @@ public class ArticleController {
 
     /**
      * Allowes stock amount to be changed
-     * @param id the id of the Article
+     *
+     * @param id           the id of the Article
      * @param changeAmount the wanted change amoiunt
      */
-    public void adjustStock(int id, int changeAmount){
-            int currentStock = -1;
-            for (int i = 0; i < this.allArticles.size(); i++) {
-                if(this.allArticles.get(i).getArtID() == id){
-                    currentStock = this.allArticles.get(i).getStock();
-                    if(changeAmount + currentStock >= 0) {
-                        this.allArticles.get(i).setStock(changeAmount + currentStock);
-                    }
-                    }
+    public void adjustStock(int id, int changeAmount) {
+        int currentStock = -1;
+        for (int i = 0; i < this.allArticles.size(); i++) {
+            if (this.allArticles.get(i).getArtID() == id) {
+                currentStock = this.allArticles.get(i).getStock();
+                if (changeAmount + currentStock >= 0) {
+                    this.allArticles.get(i).setStock(changeAmount + currentStock);
                 }
             }
-
+        }
+    }
 
 
     //TODO Do an actually sorting algo LOL

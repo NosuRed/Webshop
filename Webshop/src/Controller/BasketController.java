@@ -11,11 +11,11 @@ public class BasketController {
     private Basket basketModel = null;
 
 
-    public BasketController(Basket basket){
+    public BasketController(Basket basket) {
         this.basketModel = basket;
     }
 
-    public void addArticleToBasket(Article article){
+    public void addArticleToBasket(Article article) {
         this.basketModel.getBasketList().add(article);
     }
 
@@ -23,7 +23,8 @@ public class BasketController {
 
     /**
      * changes the article amount in the basket
-     * @param articleName the name of the article in the bassket
+     *
+     * @param articleName  the name of the article in the bassket
      * @param changeAmount the amount to change
      */
     public void changeArticleAmount(String articleName, int changeAmount) {
@@ -32,7 +33,7 @@ public class BasketController {
             if (this.basketModel.getBasketList().get(i).getArtName().equals(articleName)) {
                 if (changeAmount + currentStock >= 0) {
                     this.basketModel.getBasketList().get(i).setStock(changeAmount + currentStock);
-                }else{
+                } else {
                     deleteArticleFromBasket(this.basketModel.getBasketList().get(i));
                 }
             }
@@ -41,17 +42,18 @@ public class BasketController {
 
     /**
      * deletes an Article from the basket
+     *
      * @param article
      */
-    public void deleteArticleFromBasket(Article article){
+    public void deleteArticleFromBasket(Article article) {
         this.basketModel.getBasketList().remove(article);
     }
 
-    public void emptyBasket(){
+    public void emptyBasket() {
         this.basketModel.getBasketList().clear();
     }
 
-    public List<Article> articlesBoughtList(){
+    public List<Article> articlesBoughtList() {
         return this.basketModel.getBasketList();
     }
 
