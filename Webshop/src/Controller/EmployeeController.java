@@ -1,24 +1,29 @@
 package Controller;
 
 import Model.Article;
+import Model.Employee;
 import Model.User;
 
 
 public class EmployeeController extends UserController {
-    Article acModel = null;
-    ArticleController ac = null;
+    private ArticleController ac = null;
+
+    private Employee employee = null;
+
+
+    public EmployeeController(ArticleController ac, Employee employee){
+        this.ac = ac;
+        this.employee = employee;
+    }
 
 
     /**
      * add a new article
      *
      * @param model of the article
-     * @param ac    the article controller
      */
-    public void addArticle(Article model, ArticleController ac) {
-        this.acModel = model;
-        this.ac = ac;
-        this.ac.addArticle(this.acModel);
+    public void addArticle(Article model) {
+        this.ac.addArticle(model);
     }
 
     @Override
@@ -27,5 +32,8 @@ public class EmployeeController extends UserController {
 
     }
 
+    public Employee getEmployee(){
+        return this.employee;
+    }
 
 }

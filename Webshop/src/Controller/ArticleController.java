@@ -2,24 +2,18 @@ package Controller;
 
 import Model.Article;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 public class ArticleController {
-    private final List<Article> allArticles = new Vector<>();
-
-
-    //private ArrayList<String> allArticlesAlphabeticOrder = new ArrayList<>();
-    private final ArrayList<Integer> sortByNum = new ArrayList<>();
-
+    private List<Article> allArticles = new Vector<>();
+    private int articleId = -1;
 
     public List<Article> getAllArticles() {
         return allArticles;
     }
 
     public void addArticle(Article article) {
-        allArticles.add(article);
+        this.allArticles.add(article);
     }
 
 
@@ -32,7 +26,6 @@ public class ArticleController {
     public Article getArticleByName(String artName) {
         for (int i = 0; i < allArticles.size(); i++) {
             if (allArticles.get(i).getArtName().equals(artName)) {
-                System.out.println(allArticles.get(i).getArtName());
                 return allArticles.get(i);
             }
         }
@@ -41,7 +34,8 @@ public class ArticleController {
 
 
     public int generateArticleID() {
-        return allArticles.size();
+        this.articleId ++;
+        return articleId;
     }
 
     //TODO Error handling
@@ -65,16 +59,14 @@ public class ArticleController {
     }
 
 
-    //TODO Do an actually sorting algo LOL
-
-    /*
-    public ArrayList<String> showArticles(){
-        for(int i = 0; i< allArticles.size(); i++){
-            //TODO: Nach test löschen
-            System.out.println(""+ allArticles.get(i).getArtName() +" "+ allArticles.get(i).getArtID() + " " + allArticles.get(i).getStock());
-
+    public List<Article> sortArticlesInOrder(String userInput){
+        if (userInput.equals("A")) {
+            this.allArticles.sort(Comparator.comparing(Article::getArtName));
+        }else{
+            this.allArticles.sort(Comparator.comparing(Article::getArtID));
         }
-        return this.allArticlesAlphabeticOrder;
-    }*/
+        return this.allArticles;
+    }
+
 
 }
