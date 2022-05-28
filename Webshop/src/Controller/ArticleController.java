@@ -34,8 +34,12 @@ public class ArticleController {
 
 
     public int generateArticleID() {
-        this.articleId ++;
-        return articleId;
+        if(allArticles.size() == 0) {
+            this.articleId++;
+        }else{
+            this.articleId = allArticles.size() + 1;
+        }
+        return this.articleId;
     }
 
     //TODO Error handling

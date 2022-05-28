@@ -44,7 +44,8 @@ public class Main {
             Article art = new Article(ac.generateArticleID(), 5, "A");
             ec.addArticle(art);
         }
-
+        Article test = new Article(ac.generateArticleID(),1000,"bob");
+        ec.addArticle(test);
         List<Article> articleList = ac.sortArticlesInOrder("A");
         System.out.println(articleList.size());
         for (int i = 0; i <articleList.size() ; i++) {
