@@ -7,4 +7,13 @@ public class Employee extends User {
     }
 
 
+    @Override
+    public String getHouseNr() {
+        return null;
+    }
+
+    @Override
+    public String getStreetName() {
+        return null;
+    }
 }

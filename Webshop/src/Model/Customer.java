@@ -12,4 +12,15 @@ public class Customer extends User {
     }
 
 
+    @Override
+    public String getHouseNr() {
+        return this.houseNumber;
+    }
+
+    @Override
+    public String getStreetName() {
+        return this.streetName;
+    }
+
+
 }

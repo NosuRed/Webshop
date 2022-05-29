@@ -7,9 +7,8 @@ import java.util.Vector;
 
 public class Basket {
     private final List<Article> basketList = new Vector<>();
-    private Customer customerModel = null;
-
     private final Date buyDate = null;
+    private Customer customerModel = null;
 
     public Basket(Customer customer) {
         this.customerModel = customer;

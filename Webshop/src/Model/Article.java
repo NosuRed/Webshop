@@ -16,6 +16,10 @@ public class Article {
         return this.artID;
     }
 
+    public void setArtID(int artID) {
+        this.artID = artID;
+    }
+
     public int getStock() {
         return this.stock;
     }
@@ -28,4 +32,7 @@ public class Article {
         return this.artName;
     }
 
+    public void setArtName(String artName) {
+        this.artName = artName;
+    }
 }

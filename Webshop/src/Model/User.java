@@ -17,7 +17,6 @@ public abstract class User {
         this.isEmployee = isEmployee;
     }
 
-
     public String getName() {
         return name;
     }
@@ -41,6 +40,12 @@ public abstract class User {
     public boolean isEmployee() {
         return isEmployee;
     }
+
+
+    public abstract String getHouseNr();
+
+    public abstract String getStreetName();
+
 }
 
 

@@ -1,12 +1,18 @@
 package Controller;
 
 import Model.Article;
+import persistence.FileReadManager;
 
-import java.util.*;
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Vector;
 
 public class ArticleController {
-    private List<Article> allArticles = new Vector<>();
+    private final List<Article> allArticles = new Vector<>();
+    FileReadManager readManager = new FileReadManager();
     private int articleId = -1;
+    private Article articleModel = null;
 
     public List<Article> getAllArticles() {
         return allArticles;
@@ -15,7 +21,6 @@ public class ArticleController {
     public void addArticle(Article article) {
         this.allArticles.add(article);
     }
-
 
     /**
      * returns an article from the article list by name
@@ -32,17 +37,31 @@ public class ArticleController {
         return null;
     }
 
+    public void readData(String file) throws IOException {
+
+        readManager.openForReading(file);
+        Article article;
+
+        do {
+            article = readManager.loadArticle();
+            if (article != null) {
+                addArticle(article);
+            }
+        } while (article != null);
+
+        readManager.closeReadManager();
+    }
+
 
     public int generateArticleID() {
-        if(allArticles.size() == 0) {
+        if (allArticles.size() == 0) {
             this.articleId++;
-        }else{
+        } else {
             this.articleId = allArticles.size() + 1;
         }
         return this.articleId;
     }
 
-    //TODO Error handling
 
     /**
      * Allowes stock amount to be changed
@@ -63,13 +82,18 @@ public class ArticleController {
     }
 
 
-    public List<Article> sortArticlesInOrder(String userInput){
-        if (userInput.equals("A")) {
+    public List<Article> sortArticlesInOrder(String userInput) {
+        if (userInput.equalsIgnoreCase("A")) {
             this.allArticles.sort(Comparator.comparing(Article::getArtName));
-        }else{
+        } else if(userInput.equalsIgnoreCase("O")) {
             this.allArticles.sort(Comparator.comparing(Article::getArtID));
         }
         return this.allArticles;
+    }
+
+
+    public void setArticleModel(Article articleModel) {
+        this.articleModel = articleModel;
     }
 
 

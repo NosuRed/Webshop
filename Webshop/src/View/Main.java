@@ -1,60 +1,98 @@
 package View;
 
 
-import Controller.ArticleController;
-import Controller.BasketController;
-import Controller.EmployeeController;
+import Controller.*;
 import Model.Article;
-import Model.Basket;
 import Model.Customer;
-import Model.Employee;
+import persistence.FileReadManager;
 
-import java.util.List;
+import java.io.IOException;
+
 
 public class Main {
 
-    public static void main(String[] args) {
-
-        Employee philipp = new Employee("Philipp", "Behrens", 5, "pBehrens", "12345");
-
-        ArticleController ac = new ArticleController();
-        EmployeeController ec = new EmployeeController(ac, philipp);
-        Customer david = new Customer("David", "Behrens", 6, "dBehrens", "12345", "Hausnummer1", "Straße");
-        Basket davidsBasket = new Basket(david);
-        BasketController bc = new BasketController(davidsBasket);
-
-        Article article = new Article(ac.generateArticleID(), 10, "Birne");
-        Article article3 = new Article(ac.generateArticleID(), 200, "Gameboy");
-        Article article1 = new Article(ac.generateArticleID(), 10, "Aepfel");
-
-        ec.addArticle(article);
-        ec.addArticle(article3);
-        ec.addArticle(article1);
-
-        bc.addArticleToBasket(ac.getArticleByName("Birne"));
+    public static void main(String[] args) throws IOException {
 
 
-        bc.addArticleToBasket(ac.getArticleByName("Aepfel"));
+        ArticleController articleController = new ArticleController();
+        EmployeeController employeeController = new EmployeeController();
+        CustomerController customerController = new CustomerController();
+        FileReadManager fileReadManager = new FileReadManager();
+        UserLoginUI userLoginUI = new UserLoginUI();
+        UserLoginController userLoginController = new UserLoginController(employeeController, customerController, userLoginUI);
+        CheckUsernameController cuc = new CheckUsernameController(customerController, employeeController);
+        CustomerUI customerUI = new CustomerUI(articleController);
+
+        Article article = new Article(articleController.generateArticleID(), 2, "Bteak");
+        Article article1 = new Article(articleController.generateArticleID(), 10, "Aish");
+
+        Customer dummyCustomer = new Customer("Philipp", "Behrens", customerController.generateUserID(),"pBehrens", "12345","12b","Streethome");
+        customerController.addUser(dummyCustomer);
+        customerController.addUserLoginList();
+
+        articleController.addArticle(article);
+        articleController.addArticle(article1);
+
+        boolean stopProgramm = true;
+        boolean logOut = true;
+        userLoginUI.homePage();
+        while (stopProgramm) {
 
 
+            if (userLoginUI.getUserInput().equals("c")) {
+                userLoginUI.createCustomerUI();
+                Customer customer = new Customer(userLoginUI.getName(), userLoginUI.getLastName(), customerController.generateUserID(), userLoginUI.getUserName(), userLoginUI.getUserPassword(), userLoginUI.getHouseNr(), userLoginUI.getStreetName());
+                cuc.setCusModel(customer);
+                if ((!cuc.checkUserExists())) {
+                    customerController.addUser(customer);
+                    customerController.addUserLoginList();
+                    System.out.println("Account Created! Please Log In! ");
+                    userLoginUI.homePage();
+                } else {
+                    System.out.println("Something went wrong lol");
+                }
+            }
+
+            if (userLoginUI.getUserInput().equals("l")) {
+                userLoginUI.loginWindow();
 
 
+                if (userLoginController.empLogInCheck() != null) {
+                    System.out.println("employee UI");
 
-        for (int i = 0; i < 20; i++) {
-            Article art = new Article(ac.generateArticleID(), 5, "A");
-            ec.addArticle(art);
+                } else if (userLoginController.cusLogInCheck() != null) {
+
+                    customerController.setCustomer((Customer) userLoginController.cusLogInCheck());
+                    while(logOut) {
+                        customerUI.userHomepage(customerController.getCustomer());
+                        if(customerUI.getUserInput().equalsIgnoreCase("x")){
+                            logOut = false;
+                            userLoginUI.homePage();
+                        }else{
+                            articleController.sortArticlesInOrder(customerUI.getUserInput());
+                            customerUI.displayArticles();
+                        }
+
+                    }
+                } else {
+                    System.out.println("Account Not Found!");
+                    System.out.println("--------------------------------");
+                    userLoginUI.homePage();
+
+                }
+            } else if (userLoginUI.getUserInput().equals("x")) {
+                stopProgramm = false;
+            } else {
+                userLoginUI.homePage();
+            }
+
+
         }
-        Article test = new Article(ac.generateArticleID(),1000,"bob");
-        ec.addArticle(test);
-        List<Article> articleList = ac.sortArticlesInOrder("A");
-        System.out.println(articleList.size());
-        for (int i = 0; i <articleList.size() ; i++) {
-            System.out.println(articleList.get(i).getArtName() + " " + articleList.get(i).getArtID());
-        }
-
-
     }
 
+
 }
+
+
 
 
