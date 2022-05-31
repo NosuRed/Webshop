@@ -22,7 +22,8 @@ public class FileReadManager {
             int artID = Integer.parseInt(readData());
             String artName = readData();
             int artStock = Integer.parseInt(readData());
-            return new Article(artID, artStock, artName);
+            double artPrice = Double.parseDouble(readData());
+            return new Article(artID, artStock, artName, artPrice);
         } catch (NumberFormatException e) {
             return null;
         }

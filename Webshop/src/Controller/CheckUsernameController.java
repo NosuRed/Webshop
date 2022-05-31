@@ -28,8 +28,7 @@ public class CheckUsernameController {
                     return true;
 
                 }
-            }
-            else if (employeeModel != null) {
+            } else if (employeeModel != null) {
                 if (cu.getUserList().get(i).getUserName().equals(employeeModel.getUserName())) {
                     return true;
                 }
@@ -45,8 +44,7 @@ public class CheckUsernameController {
                     return true;
 
                 }
-            }
-            else if (cusModel != null) {
+            } else if (cusModel != null) {
                 if (ec.getUserList().get(i).getUserName().equals(cusModel.getUserName())) {
                     return true;
                 }

@@ -4,14 +4,13 @@ import Model.Article;
 import persistence.FileReadManager;
 
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 public class ArticleController {
     private final List<Article> allArticles = new Vector<>();
     FileReadManager readManager = new FileReadManager();
     private int articleId = -1;
+    private Set<Article> articleSet = null;
     private Article articleModel = null;
 
     public List<Article> getAllArticles() {
@@ -30,7 +29,7 @@ public class ArticleController {
      */
     public Article getArticleByName(String artName) {
         for (int i = 0; i < allArticles.size(); i++) {
-            if (allArticles.get(i).getArtName().equals(artName)) {
+            if (allArticles.get(i).getArtName().equalsIgnoreCase(artName)) {
                 return allArticles.get(i);
             }
         }
@@ -41,7 +40,6 @@ public class ArticleController {
 
         readManager.openForReading(file);
         Article article;
-
         do {
             article = readManager.loadArticle();
             if (article != null) {
@@ -66,18 +64,18 @@ public class ArticleController {
     /**
      * Allowes stock amount to be changed
      *
-     * @param id           the id of the Article
+     * @param articleName  Name of the Article
      * @param changeAmount the wanted change amoiunt
      */
-    public void adjustStock(int id, int changeAmount) {
-        int currentStock = -1;
-        for (int i = 0; i < this.allArticles.size(); i++) {
-            if (this.allArticles.get(i).getArtID() == id) {
-                currentStock = this.allArticles.get(i).getStock();
-                if (changeAmount + currentStock >= 0) {
-                    this.allArticles.get(i).setStock(changeAmount + currentStock);
+    public void adjustStock(String articleName, int changeAmount) {
+        this.articleSet = new HashSet<>(this.allArticles);
+        for (Article article : this.articleSet) {
+            if (article.getStock() > 0) {
+                if (article.getArtName().equalsIgnoreCase(articleName)) {
+                    article.setStock(article.getStock() + changeAmount);
                 }
             }
+
         }
     }
 
@@ -85,7 +83,7 @@ public class ArticleController {
     public List<Article> sortArticlesInOrder(String userInput) {
         if (userInput.equalsIgnoreCase("A")) {
             this.allArticles.sort(Comparator.comparing(Article::getArtName));
-        } else if(userInput.equalsIgnoreCase("O")) {
+        } else if (userInput.equalsIgnoreCase("O")) {
             this.allArticles.sort(Comparator.comparing(Article::getArtID));
         }
         return this.allArticles;

@@ -1,10 +1,6 @@
 package View;
 
-import Controller.EmployeeController;
 import Controller.IO;
-import Controller.UserController;
-
-import java.sql.SQLOutput;
 
 public class UserLoginUI {
 
@@ -22,12 +18,10 @@ public class UserLoginUI {
     private String userInput = null;
 
 
-
-
-
-
     public void loginWindow() {
+        System.out.println("--------------------------------");
         System.out.println("Login");
+        System.out.println("--------------------------------");
         System.out.println("Please Enter Your Username Below: ");
         this.userName = IO.strInput();
         System.out.println("Please Enter Your Password Below: ");
@@ -36,7 +30,7 @@ public class UserLoginUI {
 
     }
 
-    public void createCustomerUI(){
+    public void createCustomerUI() {
         System.out.println("Customer Account Creation");
         System.out.println("Please Enter Your Name: ");
         this.name = IO.strInput();
@@ -52,25 +46,39 @@ public class UserLoginUI {
         this.userPassword = IO.strInput();
         System.out.println("--------------------------------");
     }
-    public void homePage(){
+
+
+    public void homePage() {
         System.out.println("WebShop");
         System.out.println("--------------------------------");
         System.out.println("For Login Enter L");
         System.out.println("To create A New Account Enter C");
         System.out.println("To  Exit The Webshop Enter X");
         System.out.println("--------------------------------");
-        this.userInput = IO.strInput();
     }
+
     public String getUserName() {
         return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserPassword() {
         return userPassword;
     }
 
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
     public String getUserInput() {
         return userInput.toLowerCase();
+    }
+
+    public void setUserInput(String userInput) {
+        this.userInput = userInput;
     }
 
     public String getName() {

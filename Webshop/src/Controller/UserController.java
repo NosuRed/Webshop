@@ -31,7 +31,7 @@ public abstract class UserController {
     }
 
 
-    public void  addUserLoginList(){
+    public void addUserLoginList() {
         for (int i = 0; i < userList.size(); i++) {
             this.userLoginList.add(userList.get(i).getUserName() + "-" + userList.get(i).getPassword());
         }
@@ -44,7 +44,6 @@ public abstract class UserController {
     public List<User> getUserList() {
         return this.userList;
     }
-
 
 
     public int generateUserID() {

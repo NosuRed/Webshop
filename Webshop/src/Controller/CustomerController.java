@@ -25,7 +25,7 @@ public class CustomerController extends UserController {
         readManager.closeReadManager();
     }
 
-    public void  addUserLoginList(){
+    public void addUserLoginList() {
         super.addUserLoginList();
     }
 

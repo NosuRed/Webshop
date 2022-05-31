@@ -3,13 +3,19 @@ package Model;
 public class Article {
     private int artID = -1;
     private int stock = -1;
+
+
+
+    private double price = -1;
     private String artName = "";
 
 
-    public Article(int artID, int stock, String artName) {
+    public Article(int artID, int stock, String artName, double price) {
         this.artID = artID;
         this.stock = stock;
         this.artName = artName;
+        this.price = price;
+
     }
 
     public int getArtID() {
@@ -34,5 +40,9 @@ public class Article {
 
     public void setArtName(String artName) {
         this.artName = artName;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }

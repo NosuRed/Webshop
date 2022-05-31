@@ -17,6 +17,7 @@ public class FileWriteManager {
                 writer.println(ac.getAllArticles().get(i).getArtID());
                 writer.println(ac.getAllArticles().get(i).getArtName());
                 writer.println(ac.getAllArticles().get(i).getStock());
+                writer.println(ac.getAllArticles().get(i).getPrice());
             }
             writer.close();
         } catch (FileNotFoundException e) {

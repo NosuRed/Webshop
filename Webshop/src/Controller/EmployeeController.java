@@ -28,7 +28,6 @@ public class EmployeeController extends UserController {
 
 
     public void readData(String file) throws IOException {
-
         readManager.openForReading(file);
         Employee employee;
 
@@ -70,7 +69,16 @@ public class EmployeeController extends UserController {
     @Override
     public void addUser(User user) {
         super.addUser(user);
+    }
 
+
+    public Article createArticle(int stock, String articleName, double price) {
+        return new Article(ac.generateArticleID(), stock, articleName, price);
+    }
+
+
+    public Employee createEmployee(String name, String lastname, String userName, String userPassword) {
+        return new Employee(name, lastname, generateUserID(), userName, userPassword);
     }
 
 
