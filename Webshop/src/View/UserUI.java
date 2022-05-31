@@ -1,11 +1,11 @@
 package View;
 
-import Controller.ArticleController;
-import Controller.CustomerController;
-import Controller.EmployeeController;
-import Controller.IO;
+import Controller.*;
+import Model.Basket;
 import Model.Customer;
 import Model.User;
+
+import java.util.ArrayList;
 
 public class UserUI {
 
@@ -34,12 +34,20 @@ public class UserUI {
 
     public void basketHomePage() {
         System.out.println("--------------------------------");
-        System.out.println("Add An Article by Entering A!");
+        System.out.println("Add OR Decrease An Article by Entering A!");
         System.out.println("To Buy Enter B!");
         System.out.println("To Remove An Article Enter R and then Enter the Article Name!");
-        System.out.println("To Change The Article Amount Enter C and enter the Amount!");
         System.out.println("To Exit Your Basket Press X");
         System.out.println("--------------------------------");
+    }
+
+    public void  userBillUI(ArrayList<String> arrayList, double price){
+        System.out.println("--------------------------------");
+        System.out.println("Artikels Bought:");
+        System.out.println(arrayList);
+        System.out.println("Total Price: " + price);
+        System.out.println("--------------------------------");
+
     }
 
 

@@ -70,7 +70,7 @@ public class ArticleController {
     public void adjustStock(String articleName, int changeAmount) {
         this.articleSet = new HashSet<>(this.allArticles);
         for (Article article : this.articleSet) {
-            if (article.getStock() > 0) {
+            if (article.getStock() >=0) {
                 if (article.getArtName().equalsIgnoreCase(articleName)) {
                     article.setStock(article.getStock() + changeAmount);
                 }

@@ -1,0 +1,182 @@
+NamePhilipp
+LastnameBehrens
+ID: 1
+Articletest1
+Stock: 2000
+Employee: true
+Date: 2022-06-01
+NamePhilipp
+LastnameBehrens
+ID: 1
+Articletest3
+Stock: 400
+Employee: true
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test3 200]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test3 199]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test3 1, test1 2]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test3 1, test1 2]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test 1, test1 1]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test 1, test1 1]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test 2]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test 1, test 4]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test 1, test 4]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test 4]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [test 2]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test | Amount: 2 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test | Amount: 2 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test | Amount: 1 | Price: 2000.0], [Article: test | Amount: 4 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test | Amount: 1 | Price: 2000.0], [Article: test | Amount: 4 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test | Amount: 50 | Price: 2000.0], [Article: test | Amount: -20 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 2 | Price: 2000.0], [Article: test1 | Amount: -1 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 2 | Price: 2000.0], [Article: test1 | Amount: -1 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 400 | Price: 2000.0], [Article: test1 | Amount: -200 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 400 | Price: 2000.0], [Article: test1 | Amount: -200 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 200 | Price: 2000.0], [Article: test1 | Amount: -100 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 200 | Price: 2000.0], [Article: test1 | Amount: -100 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 100 | Price: 2000.0], [Article: test1 | Amount: -50 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 100 | Price: 2000.0], [Article: test1 | Amount: -50 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 500 | Price: 2000.0], [Article: test1 | Amount: -250 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test1 | Amount: 500 | Price: 2000.0], [Article: test1 | Amount: -250 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test | Amount: 200 | Price: 2000.0], [Article: test | Amount: -100 | Price: 2000.0]]
+Date: 2022-06-01
+Name: 1
+Lastname: 1
+ID:  1
+Employee: false
+Article: [[Article: test | Amount: 200 | Price: 2000.0], [Article: test | Amount: -100 | Price: 2000.0]]
+Date: 2022-06-01

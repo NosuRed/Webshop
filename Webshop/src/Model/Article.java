@@ -1,23 +1,22 @@
 package Model;
 
+import java.time.LocalDate;
+
+
 public class Article {
     private int artID = -1;
     private int stock = -1;
-
-
-
     private double price = -1;
     private String artName = "";
-
+    private LocalDate lastChanged = null;
 
     public Article(int artID, int stock, String artName, double price) {
         this.artID = artID;
         this.stock = stock;
         this.artName = artName;
         this.price = price;
-
+        this.lastChanged = LocalDate.now();
     }
-
     public int getArtID() {
         return this.artID;
     }
@@ -44,5 +43,13 @@ public class Article {
 
     public double getPrice() {
         return price;
+    }
+
+    public LocalDate getLastChanged() {
+        return lastChanged;
+    }
+
+    public void setLastChanged(LocalDate lastChanged) {
+        this.lastChanged = lastChanged;
     }
 }

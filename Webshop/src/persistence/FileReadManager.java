@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDate;
 
 public class FileReadManager {
 
@@ -18,12 +20,17 @@ public class FileReadManager {
     }
 
     public Article loadArticle() throws IOException {
+
         try {
+            Article article;
             int artID = Integer.parseInt(readData());
             String artName = readData();
             int artStock = Integer.parseInt(readData());
             double artPrice = Double.parseDouble(readData());
-            return new Article(artID, artStock, artName, artPrice);
+            LocalDate date = LocalDate.parse(readData());
+            article = new Article(artID, artStock, artName, artPrice);
+            article.setLastChanged(date);
+            return article;
         } catch (NumberFormatException e) {
             return null;
         }

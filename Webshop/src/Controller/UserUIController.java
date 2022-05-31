@@ -12,8 +12,8 @@ import persistence.FileWriteManager;
 import java.io.IOException;
 
 public class UserUIController {
-
-    boolean logOut = true;
+    private double price = 0;
+    private boolean logOut = true;
     private EmployeeController ec = null;
     private CustomerController cu = null;
     private UserLoginUI uLUI = null;
@@ -49,7 +49,7 @@ public class UserUIController {
     }
 
 
-    private void employeeUI(UserUI userUI, EmployeeController employeeController, ArticleController articleController, CustomerController customerController, String articleFile, String employeeFile) {
+    private void employeeUI(UserUI userUI, EmployeeController employeeController, ArticleController articleController, CustomerController customerController, String articleFile, String employeeFile, String logFile) {
         employeeController.setAc(articleController);
         switch (userUI.getUserInput().toUpperCase()) {
             case "A":
@@ -64,6 +64,7 @@ public class UserUIController {
                 userUI.setUserInput();
                 double articlePrice = Double.parseDouble(userUI.getUserInput());
                 employeeController.addArticle(employeeController.createArticle(articleStock, articleName, articlePrice));
+                FileWriteManager.writeLog(logFile, employeeController, articleController, articleName);
                 break;
 
             case "E":
@@ -96,6 +97,7 @@ public class UserUIController {
                 userUI.setUserIntInput();
                 int changeAmount = userUI.getUserIntInput();
                 articleController.adjustStock(articleName, changeAmount);
+                FileWriteManager.writeLog(logFile, employeeController, articleController, articleName);
                 break;
 
             case "X":
@@ -124,7 +126,7 @@ public class UserUIController {
         }
     }
 
-    public void login(UserLoginUI userLoginUI, UserUIController userUIController, ArticleController articleController, UserUI userUI, CustomerController customerController, String articleFile, EmployeeController employeeController, String employeeFile) throws IOException {
+    public void login(UserLoginUI userLoginUI, UserUIController userUIController, ArticleController articleController, UserUI userUI, CustomerController customerController, String articleFile, EmployeeController employeeController, String employeeFile, String logFile) throws IOException {
         userLoginUI.loginWindow();
         while (logOut) {
 
@@ -132,7 +134,7 @@ public class UserUIController {
                 employeeController.setEmployee((Employee) userUIController.empLogInCheck());
                 userUI.employeeHomePage();
                 userUI.setUserInput();
-                employeeUI(userUI, employeeController, articleController, customerController, articleFile, employeeFile);
+                employeeUI(userUI, employeeController, articleController, customerController, articleFile, employeeFile, logFile);
 
 
                 //User!
@@ -149,52 +151,54 @@ public class UserUIController {
                     System.out.println("--------------------------------");
 
                 } else if (userUI.getUserInput().equalsIgnoreCase("b")) {
-                    basketChosen(userUI, basketController, articleController, articleFile);
+                    basketChosen(userUI, basketController, articleController, articleFile, logFile, customerController);
                 }
 
             } else {
                 System.out.println("Account Not Found!");
                 System.out.println("--------------------------------");
+                this.logOut = false;
 
             }
         }
     }
 
     //TODO SWITCH CASE
-    private void basketChosen(UserUI userUI, BasketController basketController, ArticleController articleController, String articleFile) throws IOException {
+    private void basketChosen(UserUI userUI, BasketController basketController, ArticleController articleController, String articleFile, String logFile, CustomerController customerController) throws IOException {
         boolean basketDone = true;
 
-        while (basketDone) {
+        while(basketDone) {
             userUI.basketHomePage();
             userUI.setUserInput();
-            if (userUI.getUserInput().equalsIgnoreCase("a")) {
-                System.out.println("Article Name: ");
-                userUI.setUserInput();
-                System.out.println("Enter How Much Stock You Want: ");
-                userUI.setUserIntInput();
+            switch (userUI.getUserInput().toUpperCase()) {
+                case "A":
+                    System.out.println("Article Name: ");
+                    userUI.setUserInput();
+                    System.out.println("Enter How Much Stock You Want: ");
+                    userUI.setUserIntInput();
 
-                basketController.addArticleToBasket(articleController.getArticleByName(userUI.getUserInput()));
-                basketController.addArticle(userUI.getUserInput(), userUI.getUserIntInput());
-                basketController.setStockAmount(userUI.getUserIntInput());
-
-                basketContentBought(basketController, userUI);
-
-
-            } else if (userUI.getUserInput().equalsIgnoreCase("B")) {
-                FileWriteManager.writeArticleData(articleFile, articleController);
-                basketController.articlesBought();
-                basketController.emptyBasket();
-                basketDone = false;
-
-            } else if (userUI.getUserInput().equalsIgnoreCase("R")) {
-                removeArticle(basketController, userUI);
-
-            } else if (userUI.getUserInput().equalsIgnoreCase("C")) {
-
-            } else if (userUI.getUserInput().equalsIgnoreCase("x")) {
-                articleController.readData(articleFile);
-                basketDone = false;
-
+                    basketController.addArticleToBasket(articleController.getArticleByName(userUI.getUserInput()));
+                    basketController.addArticle(userUI.getUserInput(), userUI.getUserIntInput());
+                    basketController.setStockAmount(userUI.getUserIntInput());
+                    basketContentBought(basketController, userUI);
+                    break;
+                case "B":
+                    FileWriteManager.writeArticleData(articleFile, articleController);
+                    FileWriteManager.writeLog(logFile, customerController, articleController, basketController );
+                    userUI.userBillUI(basketController.getBasketBoughtListDisplay(), this.price);
+                    basketController.emptyBasket();
+                    basketDone = false;
+                    break;
+                case "R":
+                    removeArticle(basketController, userUI);
+                case "C":
+                    break;
+                case "X":
+                    articleController.readData(articleFile);
+                    basketDone = false;
+                    break;
+                default:
+                    System.out.println("null");
             }
         }
     }
@@ -206,13 +210,14 @@ public class UserUIController {
     }
 
 
-    private void basketContentBought(BasketController basketController, UserUI userUI) {
+    private void basketContentBought(BasketController basketController, UserUI userUI ) {
         try {
             for (int i = 0; i < basketController.articlesBoughtList().size(); i++) {
                 basketController.decreaseArticleStock(basketController.articlesBoughtList().get(i).getArtName(), userUI.getUserIntInput());
             }
-            System.out.println(basketController.getBasketBoughtListDisplay());
-            System.out.println(basketController.articlePriceSum());
+            this.price = basketController.articlePriceSum();
+            userUI.userBillUI(basketController.getBasketBoughtListDisplay(), this.price);
+
 
         } catch (NullPointerException e) {
             System.out.println("This Article does not exist: " + e);

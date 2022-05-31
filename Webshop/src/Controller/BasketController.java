@@ -16,12 +16,15 @@ public class BasketController {
     private Basket basketModel = null;
     private int stockAmount = 0;
     private int stockToChange = -1;
+    private double priceSum = 0;
 
+    private Article articleModel = null;
     public BasketController(Basket basket) {
         this.basketModel = basket;
     }
 
     public void addArticleToBasket(Article article) {
+        this.articleModel = article;
         this.basketModel.getBasketList().add(article);
     }
 
@@ -33,7 +36,7 @@ public class BasketController {
 
     public void addArticle(String articleName, int stockAmount) {
         this.stockAmount = stockAmount;
-        this.basketBoughtListDisplay.add(articleName + " " + this.stockAmount);
+        this.basketBoughtListDisplay.add("[Article: " + articleName + " | Amount: " + this.stockAmount + " | Price: " + this.articleModel.getPrice() + "]");
     }
 
     public int getStockAmount() {
@@ -47,12 +50,20 @@ public class BasketController {
     public void decreaseArticleStock(String articleName, int amount) {
         this.articleSet = new HashSet<>(basketModel.getBasketList());
         for (Article article : this.articleSet) {
-            if (article.getStock() > 0) {
+            if (article.getStock() >= 0) {
                 if (article.getArtName().equalsIgnoreCase(articleName)) {
-                    article.setStock(article.getStock() - amount);
+                    if(article.getStock() - amount >= 0) {
+                        if(amount >=1) {
+                            article.setStock(article.getStock() - amount);
+                        }else{
+                            //TODO Fix this
+                            article.setStock(article.getStock() + amount);
+                        }
+                        this.stockToChange = amount;
+                    }else{
+                        System.out.println("You Cannot Add More Stock Than Available!");
+                    }
                 }
-            } else {
-                System.out.println("error");
             }
 
         }
@@ -96,11 +107,8 @@ public class BasketController {
     }
 
     public double articlePriceSum(){
-        double priceSum = 0;
-        for (Article article: this.basketModel.getBasketList()) {
-            priceSum = article.getPrice() * article.getStock();
-        }
-        return priceSum;
+        this.priceSum += this.articleModel.getPrice() * this.stockToChange;
+        return this.priceSum;
     }
 
 }
