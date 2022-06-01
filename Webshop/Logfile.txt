@@ -180,3 +180,144 @@ ID:  1
 Employee: false
 Article: [[Article: test | Amount: 200 | Price: 2000.0], [Article: test | Amount: -100 | Price: 2000.0]]
 Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article1 | Amount: 2 | Price: 200.0], [Article: article | Amount: 1 | Price: 20.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article1 | Amount: 2 | Price: 200.0], [Article: article | Amount: 1 | Price: 20.0]]
+Date: 2022-06-01
+Name Philipp
+Lastname Behrens
+ID: 1
+Article  article
+Stock: 699
+Employee: true
+Date: 2022-06-01
+Name Philipp
+Lastname Behrens
+ID: 1
+Article  article
+Stock: 899
+Employee: true
+Date: 2022-06-01
+Name Philipp
+Lastname Behrens
+ID: 1
+Article  article3
+Stock: 400
+Employee: true
+Date: 2022-06-01
+Name Philipp
+Lastname Behrens
+ID: 1
+Article  Six
+Stock: 20
+StackSize: 4
+Employee: true
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: Six | Amount: 1 | Price: 6.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article2 | Amount: 5 | Price: 12.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: Six | Amount: 1 | Price: 6.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article2 | Amount: 5 | Price: 12.0], [Article: Six | Amount: 1 | Price: 6.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article2 | Amount: 5 | Price: 12.0], [Article: Six | Amount: 1 | Price: 6.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article2 | Amount: 2 | Price: 12.0], [Article: article | Amount: 1 | Price: 20.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article2 | Amount: 2 | Price: 12.0], [Article: article | Amount: 1 | Price: 20.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article1 | Amount: 5 | Price: 200.0], [Article: article | Amount: 1 | Price: 20.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article1 | Amount: 5 | Price: 200.0], [Article: article | Amount: 1 | Price: 20.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article | Amount: 1 | Price: 20.0], [Article: article1 | Amount: 5 | Price: 200.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article | Amount: 1 | Price: 20.0], [Article: article1 | Amount: 5 | Price: 200.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: article1 | Amount: 200 | Price: 200.0]]
+Date: 2022-06-01
+Name Philipp
+Lastname Behrens
+ID: 1
+Article  Big
+Stock: 2
+StackSize: 12
+Employee: true
+Date: 2022-06-01
+Name Philipp
+Lastname Behrens
+ID: 1
+Article  Big
+Stock: 1002
+StackSize: 12
+Employee: true
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: Big | Amount: 6 | Price: 2.0]]
+Date: 2022-06-01
+Name: Tassilo
+Lastname: Solo
+ID:  1
+Employee: false
+Article: [[Article: Big | Amount: 12 | Price: 2.0| Size: 12]]
+Date: 2022-06-01

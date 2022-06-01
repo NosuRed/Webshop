@@ -9,20 +9,32 @@ public class Article {
     private double price = -1;
     private String artName = "";
     private LocalDate lastChanged = null;
+    private int stackSize = 0;
 
-    public Article(int artID, int stock, String artName, double price) {
+    public Article(int artID, int stock, String artName, double price, int stackSize) {
         this.artID = artID;
         this.stock = stock;
         this.artName = artName;
         this.price = price;
+        this.stackSize = stackSize;
         this.lastChanged = LocalDate.now();
     }
+
     public int getArtID() {
         return this.artID;
     }
 
     public void setArtID(int artID) {
         this.artID = artID;
+    }
+
+
+    public int getStackSize(){
+        return this.stackSize;
+    }
+
+    public void setStackSize(int stackSize) {
+        this.stackSize = stackSize;
     }
 
     public int getStock() {

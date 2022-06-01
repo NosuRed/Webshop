@@ -17,7 +17,6 @@ public class Main {
         String customerFile = "Customer.txt";
         String logFile = "Logfile.txt";
 
-
         ArticleController articleController = new ArticleController();
         EmployeeController employeeController = new EmployeeController();
         CustomerController customerController = new CustomerController();
@@ -30,7 +29,6 @@ public class Main {
 
         customerController.addUserLoginList();
         employeeController.addUserLoginList();
-
 
 
         boolean stopProgramm = true;

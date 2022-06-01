@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="79.63438708616505" y="550.3908725952783">Model.Employee</node>
+    <node x="791.2724289681972" y="1105.9394317587676">Controller.IO</node>
+    <node x="450.8950663082568" y="958.305583982451">Model.Article</node>
+    <node x="1445.2008566059226" y="583.037247063042">Controller.BasketController</node>
+    <node x="15.150315884077457" y="130.30616684945045">Controller.EmployeeController</node>
+    <node x="768.3087786228925" y="300.44759882078904">Model.Customer</node>
+    <node x="850.9984657976801" y="905.7427663660415">Model.Basket</node>
+    <node x="548.7447172462804" y="-14.856362161681105">Controller.UserController</node>
+    <node x="-110.35851402397788" y="758.5047996081184">Controller.UserUIController</node>
+    <node x="862.6485537889586" y="3.973876110212686">Controller.CustomerController</node>
+    <node x="801.1683119152548" y="530.7029727094891">Controller.ArticleController</node>
+    <node x="1092.3180492304164" y="987.7384482829584">View.UserUI</node>
+    <node x="447.22575731544566" y="1314.9096100482834">View.Main</node>
+    <node x="327.24534395709856" y="725.6919633726101">persistence.FileWriteManager</node>
+    <node x="182.20001209933568" y="1083.5047255668396">View.UserLoginUI</node>
+    <node x="1170.4463752497893" y="237.3271607599491">Controller.CheckUsernameController</node>
+    <node x="1147.2183536971106" y="585.1505261125103">persistence.FileReadManager</node>
+    <node x="413.8255768619397" y="301.0721705774215">Model.User</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Controller.CustomerController" target="Controller.UserController" relationship="GENERALIZATION">
+      <point x="4.4621104143516277E-4" y="-83.49987611021268" />
+      <point x="953.149" y="-32.356" />
+      <point x="259.0" y="-32.356" />
+      <point x="259.0" y="112.644" />
+      <point x="-94.4997172462804" y="3.6216168111025127E-4" />
+    </edge>
+    <edge source="Controller.EmployeeController" target="Controller.UserController" relationship="GENERALIZATION">
+      <point x="-3.1588407745175573E-4" y="-171.50016684945047" />
+      <point x="184.15" y="43.0" />
+      <point x="259.0" y="43.0" />
+      <point x="259.0" y="112.644" />
+      <point x="-94.4997172462804" y="3.6216168111025127E-4" />
+    </edge>
+    <edge source="Model.Employee" target="Model.User" relationship="GENERALIZATION">
+      <point x="136.99961291383497" y="1.2740472163841332E-4" />
+      <point x="384.0" y="599.891" />
+      <point x="384.0" y="483.072" />
+      <point x="-146.99957686193966" y="-1.705774214997291E-4" />
+    </edge>
+    <edge source="Model.Customer" target="Model.User" relationship="GENERALIZATION">
+      <point x="2.2137710743663774E-4" y="-60.99959882078906" />
+      <point x="939.309" y="282.948" />
+      <point x="384.0" y="282.948" />
+      <point x="384.0" y="483.072" />
+      <point x="-146.99957686193966" y="-1.705774214997291E-4" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7825255102040817" showDependencies="false" x="814.4999999999998" y="750.9999999999999" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

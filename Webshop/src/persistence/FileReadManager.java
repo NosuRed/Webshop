@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDate;
 
 public class FileReadManager {
 
@@ -28,7 +27,8 @@ public class FileReadManager {
             int artStock = Integer.parseInt(readData());
             double artPrice = Double.parseDouble(readData());
             LocalDate date = LocalDate.parse(readData());
-            article = new Article(artID, artStock, artName, artPrice);
+            int stackSize = Integer.parseInt(readData());
+            article = new Article(artID, artStock, artName, artPrice, stackSize);
             article.setLastChanged(date);
             return article;
         } catch (NumberFormatException e) {

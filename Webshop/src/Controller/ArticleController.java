@@ -37,7 +37,6 @@ public class ArticleController {
     }
 
     public void readData(String file) throws IOException {
-
         readManager.openForReading(file);
         Article article;
         do {
@@ -46,7 +45,6 @@ public class ArticleController {
                 addArticle(article);
             }
         } while (article != null);
-
         readManager.closeReadManager();
     }
 
@@ -70,7 +68,7 @@ public class ArticleController {
     public void adjustStock(String articleName, int changeAmount) {
         this.articleSet = new HashSet<>(this.allArticles);
         for (Article article : this.articleSet) {
-            if (article.getStock() >=0) {
+            if (article.getStock() >= 0) {
                 if (article.getArtName().equalsIgnoreCase(articleName)) {
                     article.setStock(article.getStock() + changeAmount);
                 }

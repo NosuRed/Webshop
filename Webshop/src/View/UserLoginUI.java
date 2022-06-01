@@ -18,9 +18,6 @@ public class UserLoginUI {
     private String userInput = null;
 
 
-
-
-
     public void loginWindow() {
         System.out.println("--------------------------------");
         System.out.println("Login");

@@ -72,8 +72,8 @@ public class EmployeeController extends UserController {
     }
 
 
-    public Article createArticle(int stock, String articleName, double price) {
-        return new Article(ac.generateArticleID(), stock, articleName, price);
+    public Article createArticle(int stock, String articleName, double price, int stackSize) {
+        return new Article(ac.generateArticleID(), stock, articleName, price, stackSize);
     }
 
 

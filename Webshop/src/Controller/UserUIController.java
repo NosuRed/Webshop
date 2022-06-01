@@ -24,6 +24,10 @@ public class UserUIController {
         this.uLUI = uLUI;
     }
 
+    /**
+     * Check if the User trying to log in is an employee
+     * @return the employee
+     */
     public User empLogInCheck() {
         if (ec.getUserLoginList().contains(uLUI.getUserName() + "-" + uLUI.getUserPassword())) {
             for (int i = 0; i < ec.getUserList().size(); i++) {
@@ -36,6 +40,10 @@ public class UserUIController {
         return null;
     }
 
+    /**
+     * check if the User trying to log in is a customer
+     * @return return the customer
+     */
     public User cusLogInCheck() {
         if (cu.getUserLoginList().contains(uLUI.getUserName() + "-" + uLUI.getUserPassword())) {
             for (int i = 0; i < cu.getUserList().size(); i++) {
@@ -63,7 +71,10 @@ public class UserUIController {
                 System.out.println("Enter The Price of The Article");
                 userUI.setUserInput();
                 double articlePrice = Double.parseDouble(userUI.getUserInput());
-                employeeController.addArticle(employeeController.createArticle(articleStock, articleName, articlePrice));
+                System.out.println("Enter A Stack size");
+                userUI.setUserIntInput();
+                int stackSize = userUI.getUserIntInput();
+                employeeController.addArticle(employeeController.createArticle(articleStock, articleName, articlePrice, stackSize));
                 FileWriteManager.writeLog(logFile, employeeController, articleController, articleName);
                 break;
 
@@ -167,7 +178,7 @@ public class UserUIController {
     private void basketChosen(UserUI userUI, BasketController basketController, ArticleController articleController, String articleFile, String logFile, CustomerController customerController) throws IOException {
         boolean basketDone = true;
 
-        while(basketDone) {
+        while (basketDone) {
             userUI.basketHomePage();
             userUI.setUserInput();
             switch (userUI.getUserInput().toUpperCase()) {
@@ -184,7 +195,7 @@ public class UserUIController {
                     break;
                 case "B":
                     FileWriteManager.writeArticleData(articleFile, articleController);
-                    FileWriteManager.writeLog(logFile, customerController, articleController, basketController );
+                    FileWriteManager.writeLog(logFile, customerController, articleController, basketController);
                     userUI.userBillUI(basketController.getBasketBoughtListDisplay(), this.price);
                     basketController.emptyBasket();
                     basketDone = false;
@@ -210,10 +221,10 @@ public class UserUIController {
     }
 
 
-    private void basketContentBought(BasketController basketController, UserUI userUI ) {
+    private void basketContentBought(BasketController basketController, UserUI userUI) {
         try {
             for (int i = 0; i < basketController.articlesBoughtList().size(); i++) {
-                basketController.decreaseArticleStock(basketController.articlesBoughtList().get(i).getArtName(), userUI.getUserIntInput());
+                basketController.decreaseArticleStock(basketController.articlesBoughtList().get(i).getArtName(), userUI.getUserIntInput(), basketController.articlesBoughtList().get(i).getStackSize());
             }
             this.price = basketController.articlePriceSum();
             userUI.userBillUI(basketController.getBasketBoughtListDisplay(), this.price);

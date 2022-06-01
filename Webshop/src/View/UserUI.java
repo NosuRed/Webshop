@@ -1,7 +1,9 @@
 package View;
 
-import Controller.*;
-import Model.Basket;
+import Controller.ArticleController;
+import Controller.CustomerController;
+import Controller.EmployeeController;
+import Controller.IO;
 import Model.Customer;
 import Model.User;
 
@@ -41,7 +43,7 @@ public class UserUI {
         System.out.println("--------------------------------");
     }
 
-    public void  userBillUI(ArrayList<String> arrayList, double price){
+    public void userBillUI(ArrayList<String> arrayList, double price) {
         System.out.println("--------------------------------");
         System.out.println("Artikels Bought:");
         System.out.println(arrayList);
@@ -84,13 +86,13 @@ public class UserUI {
         return userIntInput;
     }
 
-// TODO use formate for the output
+    // TODO use formate for the output
     public void displayArticles(User user) {
         for (int i = 0; i < ac.getAllArticles().size(); i++) {
             if (!(user.isEmployee())) {
-                System.out.println(ac.getAllArticles().get(i).getArtName() + " | Stock: " + ac.getAllArticles().get(i).getStock() +" | Price: " + ac.getAllArticles().get(i).getPrice() );
+                System.out.println(ac.getAllArticles().get(i).getArtName() + " | Stock: " + ac.getAllArticles().get(i).getStock() + " | Price: " + ac.getAllArticles().get(i).getPrice()+ "| Pack: " + ac.getAllArticles().get(i).getStackSize());
             } else {
-                System.out.println(ac.getAllArticles().get(i).getArtName() + " | Stock: " + ac.getAllArticles().get(i).getStock() + " | ID: " + ac.getAllArticles().get(i).getArtID() +" | Price " + ac.getAllArticles().get(i).getPrice());
+                System.out.println(ac.getAllArticles().get(i).getArtName() + " | Stock: " + ac.getAllArticles().get(i).getStock() + " | ID: " + ac.getAllArticles().get(i).getArtID() + " | Price " + ac.getAllArticles().get(i).getPrice() + "| Stack size " + ac.getAllArticles().get(i).getStackSize());
             }
 
         }
